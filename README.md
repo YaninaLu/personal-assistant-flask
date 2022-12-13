@@ -1,5 +1,6 @@
 # personal-assistant-flask
-##Environments
+Environments
+------------
 ```
 SECRET_KEY={Your Secret key}
 ```

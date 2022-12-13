@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Contact Book</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"/>
+  </head>
+  <body>
+    <main class="container">
+      <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+          <li><a href="/" role="button"> Go back to the main page </a></li>
+          <li><a href="/contact_add/" role="button">Add new contact</a></li>
+        </ul>
+      </nav>
+      {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-danger">{{message}}: {{messages[message]}}</div>
+          {% endfor %}
+      {% endif %}
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Fullname</th>
+          <th>Phone</th>
+          <th>Birthday</th>
+          <th>Email</th>
+          <th>Address</th>
+        </tr>
+        {% for contact in contacts%}
+        <tr>
+          <td>{{contact.id}}</td>
+          <td>{{contact.name}}</td>
+          <td>{{contact.phone}}</td>
+          <td>{{contact.birthday}}</td>
+          <td>{{contact.email}}</td>
+          <td>{{contact.address}}</td>
+          <td><a href="/contact_update/{{contact.id}}" role="button">Update</a></td>
+          <td><a href="/delete_contact/{{contact.id}}" role="button" class="contrast">Delete</a></td>
+        </tr>
+        {% endfor %}
+      </table>
+    </main>
+  </body>
+</html>
